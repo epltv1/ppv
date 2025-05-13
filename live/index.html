@@ -6,6 +6,7 @@
   <title>PPV.WTF - Live Event</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-black">
@@ -64,7 +65,19 @@
           .find(s => s.uri_name === uriName);
         if (stream) {
           document.getElementById('eventTitle').textContent = `Live Event: ${stream.name}`;
-          document.getElementById('videoPlayer').src = stream.iframe || 'https://player.streamed.su/placeholder';
+          if (stream.iframe) {
+            document.getElementById('videoPlayer').src = stream.iframe;
+          } else if (stream.m3u8) {
+            const video = document.createElement('video');
+            video.id = 'player';
+            video.className = 'video-js';
+            video.controls = true;
+            video.innerHTML = `<source src="${stream.m3u8}" type="application/x-mpegURL">`;
+            document.querySelector('.video-container').replaceChild(video, document.getElementById('videoPlayer'));
+            videojs('player', { autoplay: true });
+          } else {
+            document.getElementById('eventTitle').textContent = 'No Stream Available';
+          }
         } else {
           document.getElementById('eventTitle').textContent = 'Event Not Found';
         }
