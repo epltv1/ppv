@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/live/:path*",
-      "destination": "/live/:path*.html"
+      "source": "/live/:uri_name",
+      "destination": "/live/index.html"
     },
     {
       "source": "/category/:id",
@@ -14,5 +14,11 @@
       "source": "/:path*",
       "destination": "/:path*.html"
     }
-  ]
+  ],
+  "functions": {
+    "api/streams.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
 }
