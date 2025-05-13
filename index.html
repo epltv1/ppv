@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ppv.wtf - Free PPV and More</title>
+  <meta name="description" content="ppv.wtf - Free PPV boxing, UFC, Basketball, Football, Darts and other content available live and on-demand.">
+  <meta name="keywords" content="ppv.wtf, ppv, free ppv, ppv land, basketball, nba, soccer, football, dazn, misfits, ufc, stream, online, free">
+  <meta property="og:title" content="ppv.wtf - Free PPV and More" />
+  <meta property="og:url" content="https://ppv.wtf" />
+  <meta name="twitter:title" content="ppv.wtf - Free PPV and More">
+  <meta name="twitter:description" content="Free PPV boxing and other content available live and on-demand.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link href="https://fonts.bunny.net/css?family=kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-black">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="https://via.placeholder.com/100x30?text=PPV.WTF" height="30" alt="Logo" /></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav navbar-nav-left me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/request">Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="/vods">VODs</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://ppv.zone/">Mirror list</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://discord.gg/5AMPdpckjH">Discord</a></li>
+          <li class="nav-item"><a class="nav-link" href="/ft">Fishtank</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">English</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li><a class="dropdown-item" href="#" onclick="document.cookie = 'fs_locale=en; expires=Mon, 18 Jan 2038 12:00:00 UTC; path=/';location.reload();">English</a></li>
+              <li><a class="dropdown-item" href="#" onclick="document.cookie = 'fs_locale=de; expires=Mon, 18 Jan 2038 12:00:00 UTC; path=/';location.reload();">Deutsch</a></li>
+              <li><a class="dropdown-item" href="#" onclick="document.cookie = 'fs_locale=es; expires=Mon, 18 Jan 2038 12:00:00 UTC; path=/';location.reload();">Español</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="loginDropdown">
+              <li><a class="dropdown-item" href="/auth/login">Login</a></li>
+              <li><a class="dropdown-item" href="/auth/register">Register</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="loadingOverlay" class="loading-overlay">
+    <noscript>
+      <div class="alert alert-danger" role="alert">
+        You must enable JavaScript for this site to work.
+      </div>
+    </noscript>
+    <div class="alert alert-danger d-none" role="alert" id="loaderError"></div>
+    <div class="spinner-border text-light" id="loaderSpinner" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div class="container container-fluid pt-2 text-white">
+    <div class="alert alert-warning alert-dismissible mt-4" role="alert">
+      <h4 class="alert-heading"><strong>PPV.LAND is now PPV.WTF.</strong></h4>
+      Please bookmark our alternative mirrors at <a href="https://ppv.zone" target="_blank">ppv.zone</a> in case of down time. This change is permanent.
+      <h3 class="alert-heading mt-4">All cricket streams are suspended.</h3>
+      <p>Please do not request any cricket games.</p>
+      <hr>
+      <strong>- Your PPV.WTF team</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+      We now have a discord server. Enjoy! <a href="https://discord.gg/5AMPdpckjH" class="alert-link">DISCORD</a>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div id="live" class="mt-4 section-container">
+      <div class="d-flex flex-wrap flex-lg-nowrap justify-content-lg-between align-items-center">
+        <h2 id="liveHeader" class="m-0 w-100 w-lg-auto">
+          <span style="animation-duration:1.2s;" class="spinner-grow text-danger" role="status"></span> <span id="liveStatus">No Live Events</span>
+        </h2>
+        <ul id="categorybuttons" class="nav justify-content-end mt-2 mt-lg-0"></ul>
+      </div>
+      <div id="livecards" class="card-container py-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 skeleton">
+          <a href="#" class="item-card">
+            <div class="card bg-black text-white">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNs65/2HwAF+gKsz1Cl6gAAAABJRU5ErkJggg" class="card-img-top cover" alt="Loading..." loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title placeholder-glow" style="min-height:48px;"><span class="placeholder col-6"></span></h5>
+                <p class="card-text"><span class="text-muted"><span class="placeholder col-4"></span></span><span class="placeholder col-4 float-end"></span></p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Additional skeleton cards -->
+      </div>
+    </div>
+    <div id="categories" class="mt-5 section-container"></div>
+    <footer class="container-fluid d-flex flex-column flex-lg-row justify-content-lg-between align-items-center py-2 border-top mt-5">
+      <p class="mb-2 mb-lg-0 text-body-secondary text-center text-lg-start">PPV.WTF 2025</p>
+      <ul class="nav justify-content-center justify-content-lg-end mb-0">
+        <li class="nav-item"><a href="/api" class="nav-link px-2 text-body-secondary">API</a></li>
+        <li class="nav-item"><a href="https://discord.gg/5AMPdpckjH" class="nav-link px-2 text-body-secondary">Discord</a></li>
+        <li class="nav-item"><a href="/changelog" class="nav-link px-2 text-body-secondary">Changelog</a></li>
+        <li class="nav-item"><a href="/vip" class="nav-link px-2 text-body-secondary">Donate / VIP Access</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-link px-2 text-body-secondary">Contact us</a></li>
+      </ul>
+    </footer>
+  </div>
+  <script defer>
+    function zeropad(num) {
+      return num > 9 ? num : '0' + num;
+    }
+
+    function countdown() {
+      const now = Math.floor(Date.now() / 1000);
+      const countdownElements = document.querySelectorAll('[data-start]');
+
+      countdownElements.forEach(function(element) {
+        const startTime = parseInt(element.getAttribute('data-start'), 10);
+        let timer = startTime - now;
+
+        if (timer > 0) {
+          let days = Math.floor(timer / 86400),
+              hours = Math.floor(timer / 3600),
+              mins = Math.floor(timer / 60),
+              secs = Math.floor(timer);
+
+          let dd = days,
+              hh = hours - days * 24,
+              mm = mins - hours * 60,
+              ss = secs - mins * 60;
+
+          let clock = `${dd} days, ${zeropad(hh)}:${zeropad(mm)}:${zeropad(ss)}`;
+          if (dd === 1) clock = `${dd} day, ${zeropad(hh)}:${zeropad(mm)}:${zeropad(ss)}`;
+          if (dd === 0) clock = `${zeropad(hh)}:${zeropad(mm)}:${zeropad(ss)}`;
+
+          element.innerHTML = clock;
+        } else {
+          element.innerHTML = '<strong>Live soon</strong>';
+          element.style.color = '#ff8280';
+        }
+      });
+
+      setTimeout(countdown, 1000);
+    }
+
+    async function loadContent() {
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const loaderError = document.getElementById('loaderError');
+      const loaderSpinner = document.getElementById('loaderSpinner');
+      const ulElement = document.getElementById('categorybuttons');
+      const liveStatus = document.getElementById('liveStatus');
+
+      try {
+        const response = await fetch('https://ppv.wtf/api/streams');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+
+        ulElement.innerHTML = '';
+        document.getElementById("categories").innerHTML = '';
+        document.getElementById("livecards").innerHTML = '';
+
+        if (!data.success && data.error) {
+          loaderError.classList.remove('d-none');
+          loaderSpinner.classList.add('d-none');
+          loaderError.textContent = data.error;
+          liveStatus.textContent = 'No Live Events';
+          loadingOverlay.classList.add('hidden');
+          return;
+        }
+
+        const hasLiveStreams = data.streams.some(category =>
+          category.streams.some(stream => stream.starts_at <= Math.floor(Date.now() / 1000) && !category.always_live && !stream.always_live)
+        );
+        liveStatus.textContent = hasLiveStreams ? 'Live Now' : 'No Live Events';
+
+        if (data.streams.length >= 1) {
+          data.streams.forEach(categoryData => {
+            let categoryName = categoryData.category;
+            let alwaysLive = categoryData.always_live;
+            let streams = categoryData.streams;
+            let categoryId = categoryData.id;
+
+            const liElement = document.createElement('li');
+            liElement.className = 'nav-item';
+            const aElement = document.createElement('a');
+            aElement.className = 'nav-link';
+            aElement.href = `/category/${categoryId}`;
+            aElement.textContent = categoryName;
+            liElement.appendChild(aElement);
+            ulElement.appendChild(liElement);
+
+            let categoryHtml = `
+              <div id="${categoryId}-container" class="section-container">
+                <h2 class="m-0"><a href="/category/${categoryId}">${categoryName}</a>`;
+            if (alwaysLive == 1) {
+              categoryHtml += ` <span class="badge bg-success">24/7</span>`;
+            }
+            categoryHtml += `</h2><div id="${categoryId}" class="card-container py-3"></div></div>`;
+            document.getElementById("categories").innerHTML += categoryHtml;
+
+            streams.forEach(stream => {
+              let livecounter = stream.starts_at <= Math.floor(Date.now() / 1000)
+                ? `<span class="float-end"><span class="text-danger"><strong>●</strong></span> ${stream.viewers}</span>`
+                : `<span class="float-end" data-start="${stream.starts_at}"></span>`;
+              let streamHtml = `
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <a href="/live/${stream.uri_name}" class="item-card">
+                    <div class="card bg-black text-white">
+                      <img src="${stream.poster}" class="card-img-top cover" alt="${stream.name}" loading="lazy">
+                      <div class="card-body">
+                        <h5 class="card-title" style="min-height:48px;">${stream.name}</h5>
+                        <p class="card-text">
+                          <span class="text-muted">${stream.tag}</span>
+                          ${livecounter}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              `;
+              if (stream.starts_at >= Math.floor(Date.now() / 1000) || categoryData.always_live == 1 || stream.always_live == 1) {
+                document.getElementById(categoryId).innerHTML += streamHtml;
+              } else {
+                document.getElementById("livecards").innerHTML += streamHtml;
+              }
+            });
+
+            if (!document.getElementById(categoryId).innerHTML) {
+              document.getElementById(`${categoryId}-container`).remove();
+            }
+          });
+        } else {
+          document.getElementById("livecards").innerHTML = '<p class="text-center">No streams are live right now. Scroll down to see what\'s on later.</p>';
+        }
+
+        if (!document.getElementById("livecards").innerHTML) {
+          document.getElementById("livecards").innerHTML = '<p class="text-center">No streams are live right now. Scroll down to see what\'s on later.</p>';
+        }
+
+        loadingOverlay.classList.add('hidden');
+      } catch (error) {
+        loaderError.classList.remove('d-none');
+        loaderSpinner.classList.add('d-none');
+        loaderError.textContent = 'Failed to load streams: ' + error.message;
+        liveStatus.textContent = 'No Live Events';
+        loadingOverlay.classList.add('hidden');
+      }
+    }
+
+    window.onload = function() {
+      loadContent();
+      setInterval(loadContent, 60000);
+      countdown();
+    };
+  </script>
+  <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
