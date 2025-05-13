@@ -95,7 +95,6 @@
             </div>
           </a>
         </div>
-        <!-- Additional skeleton cards -->
       </div>
     </div>
     <div id="categories" class="mt-5 section-container"></div>
@@ -156,7 +155,7 @@
       const liveStatus = document.getElementById('liveStatus');
 
       try {
-        const response = await fetch('https://ppv.wtf/api/streams', {
+        const response = await fetch('/api/streams', {
           method: 'GET',
           headers: { 'Accept': 'application/json' }
         });
@@ -180,7 +179,7 @@
         document.getElementById("livecards").innerHTML = '';
 
         if (!data.success && data.error) {
-          throw new Error(data.error);
+          throw new Error(data.error || 'Invalid streams data');
         }
 
         const hasLiveStreams = data.streams.some(category =>
